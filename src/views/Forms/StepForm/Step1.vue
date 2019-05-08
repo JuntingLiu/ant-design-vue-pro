@@ -1,6 +1,6 @@
 <template>
   <div>
-    Register
+    第一步
   </div>
 </template>
 

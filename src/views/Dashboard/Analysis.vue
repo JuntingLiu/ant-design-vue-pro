@@ -1,6 +1,6 @@
 <template>
   <div>
-    Register
+    Analysis
   </div>
 </template>
 

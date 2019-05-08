@@ -1,6 +1,6 @@
 <template>
   <div>
-    Register
+    404
   </div>
 </template>
 

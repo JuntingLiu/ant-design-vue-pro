@@ -1,6 +1,6 @@
 <template>
   <div>
-    Register
+    Header
   </div>
 </template>
 
