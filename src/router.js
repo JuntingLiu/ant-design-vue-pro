@@ -24,13 +24,13 @@ const router = new Router({
           path: "login",
           name: "login",
           component: () =>
-            import(/* webpackChunkName: "user" */ "./views/User/Login")
+            import(/* webpackChunkName: "user" */ "./views/User/Login.vue")
         },
         {
           path: "register",
           name: "register",
           component: () =>
-            import(/* webpackChunkName: "user" */ "./views/User/Register")
+            import(/* webpackChunkName: "user" */ "./views/User/Register.vue")
         }
       ]
     },
@@ -117,9 +117,8 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
-router.afterEach((to, from, next) => {
+router.afterEach(() => {
   NProgress.done();
-  next();
 });
 
 export default router;
