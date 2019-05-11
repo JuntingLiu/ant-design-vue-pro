@@ -18,12 +18,18 @@
         <div>
           <div>
             <h3>整体风格定制</h3>
-            <a-radio-group v-model="navTheme">
+            <a-radio-group
+              :value="$route.query.navTheme || 'dark'"
+              @change="e => handleSettingChange('navTheme', e.target.value)"
+            >
               <a-radio value="dark">黑色</a-radio>
               <a-radio value="light">白色</a-radio>
             </a-radio-group>
             <h3>导航模式</h3>
-            <a-radio-group v-model="navLayout">
+            <a-radio-group
+              :value="$route.query.navLayout || 'left'"
+              @change="e => handleSettingChange('navLayout', e.target.value)"
+            >
               <a-radio value="left">左边菜单</a-radio>
               <a-radio value="top">顶部菜单</a-radio>
             </a-radio-group>
@@ -37,9 +43,7 @@
 export default {
   data() {
     return {
-      visible: false,
-      navTheme: "dark",
-      navLayout: "left"
+      visible: false
     };
   },
   methods: {
@@ -48,6 +52,11 @@ export default {
     },
     onClose() {
       this.visible = false;
+    },
+    handleSettingChange(type, value) {
+      this.$router.push({
+        query: { ...this.$route.query, [type]: value }
+      });
     }
   }
 };

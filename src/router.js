@@ -113,7 +113,10 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  NProgress.start(); // 顶部进度条
+  // 地址相同就不执行进度条了
+  if (to.path !== from.path) {
+    NProgress.start(); // 顶部进度条
+  }
   next();
 });
 
