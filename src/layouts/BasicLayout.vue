@@ -6,10 +6,11 @@
         v-model="collapsed"
         :theme="navTheme"
         :trigger="null"
+        :width="256"
         collapsible
       >
         <div class="logo">Ant Design Vue Pro</div>
-        <SiderMenu />
+        <SiderMenu :theme="navTheme" />
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="display: flex; background: #fff; padding: 0;">

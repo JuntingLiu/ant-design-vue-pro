@@ -1,3 +1,11 @@
+/**
+ * 路由
+ * @Author: Junting.liu
+ * @Date: 2019-05-11 11:12:47
+ * @Last Modified by: Junting.liu
+ * @Last Modified time: 2019-05-11 12:57:25
+ */
+
 import Vue from "vue";
 import Router from "vue-router";
 import NProgress from "nprogress";
@@ -16,6 +24,7 @@ const router = new Router({
     },
     {
       path: "/user",
+      hideInMenu: true,
       // component: { render: h => h("router-view") }, // 通过 render 函数，省略单独写一个组件
       component: () =>
         import(/* webpackChunkName: "layout" */ "./layouts/UserLayout"),
@@ -46,11 +55,13 @@ const router = new Router({
         {
           path: "/dashboard",
           name: "dashboard",
+          meta: { icon: "dashboard", title: "仪表盘" },
           component: { render: h => h("router-view") },
           children: [
             {
               path: "analysis",
               name: "analysis",
+              meta: { title: "仪表盘" },
               component: () =>
                 import(/* webpackChunkName: "dashboard" */ "./views/Dashboard/Analysis")
             }
@@ -62,17 +73,21 @@ const router = new Router({
     {
       path: "/form",
       name: "form",
+      meta: { icon: "form", title: "表单" },
       component: { render: h => h("router-view") },
       children: [
         {
           path: "basic-form",
           name: "basicForm",
+          meta: { title: "基础表单" },
           component: () =>
             import(/* webpackChunkName: "form" */ "./views/Forms/BasicForm")
         },
         {
           path: "step-form",
           name: "stepForm",
+          hideChildrenInMenu: true,
+          meta: { title: "分布表单" },
           component: () =>
             import(/* webpackChunkName: "form" */ "./views/Forms/StepForm/index"),
           children: [
@@ -101,6 +116,7 @@ const router = new Router({
     {
       path: "*",
       name: "404",
+      hideInMenu: true,
       component: NotFound
     },
     {
