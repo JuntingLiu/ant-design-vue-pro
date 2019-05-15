@@ -3,7 +3,7 @@
  * @Author: Junting.liu
  * @Date: 2019-05-11 11:12:47
  * @Last Modified by: Junting.liu
- * @Last Modified time: 2019-05-11 12:57:25
+ * @Last Modified time: 2019-05-15 22:25:38
  */
 
 import Vue from "vue";
@@ -118,12 +118,6 @@ const router = new Router({
       name: "404",
       hideInMenu: true,
       component: NotFound
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
     }
   ]
 });
