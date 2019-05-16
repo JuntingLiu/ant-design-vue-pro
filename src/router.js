@@ -3,14 +3,17 @@
  * @Author: Junting.liu
  * @Date: 2019-05-11 11:12:47
  * @Last Modified by: Junting.liu
- * @Last Modified time: 2019-05-16 22:33:15
+ * @Last Modified time: 2019-05-17 00:07:35
  */
 
 import Vue from "vue";
 import Router from "vue-router";
+import findLast from "lodash/findLast";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import Forbidden from "./views/403";
 import NotFound from "./views/404";
+import { isLogin, check } from "./utils/auth";
 
 Vue.use(Router);
 
@@ -45,6 +48,7 @@ const router = new Router({
     },
     {
       path: "/",
+      meta: { authority: ["user", "admin"] },
       component: () =>
         import(/* webpackChunkName: "layout" */ "./layouts/BasicLayout.vue"),
       children: [
@@ -71,7 +75,7 @@ const router = new Router({
         {
           path: "/form",
           name: "form",
-          meta: { icon: "form", title: "表单" },
+          meta: { icon: "form", title: "表单", authority: ["admin"] },
           component: { render: h => h("router-view") },
           children: [
             {
@@ -118,6 +122,12 @@ const router = new Router({
       ]
     },
     {
+      path: "/403",
+      name: "403",
+      hideInMenu: true,
+      component: Forbidden
+    },
+    {
       path: "*",
       name: "404",
       hideInMenu: true,
@@ -130,6 +140,25 @@ router.beforeEach((to, from, next) => {
   // 地址相同就不执行进度条了
   if (to.path !== from.path) {
     NProgress.start(); // 顶部进度条
+  }
+
+  // to.matched 当前跳转路径的路由集合, 面包屑
+  const record = findLast(to.matched, record => record.meta.authority); // 从右至左最近一个的权限，也就上一级的权限
+
+  // 上一级存在，并检查当前用户没有该权限
+  if (record && !check(record.meta.authority)) {
+    // 未登录跳转的又不是 login 页
+    if (!isLogin() && to.path !== "/user/login") {
+      next({
+        path: "/user/login"
+      });
+    } else if (to.path !== "403") {
+      // 已登录
+      next({
+        path: "/403"
+      });
+    }
+    NProgress.done();
   }
   next();
 });
