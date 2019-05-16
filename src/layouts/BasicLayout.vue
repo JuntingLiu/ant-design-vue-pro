@@ -22,11 +22,7 @@
           <Header />
         </a-layout-header>
         <a-layout-content style="margin: 0 16px">
-          <div
-            :style="{ padding: '24px', background: '#fff', minHeight: '360px' }"
-          >
-            <router-view></router-view>
-          </div>
+          <router-view></router-view>
         </a-layout-content>
         <a-layout-footer style="text-align: center">
           <Footer />

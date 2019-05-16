@@ -3,7 +3,7 @@
  * @Author: Junting.liu
  * @Date: 2019-05-11 11:12:47
  * @Last Modified by: Junting.liu
- * @Last Modified time: 2019-05-15 22:25:38
+ * @Last Modified time: 2019-05-16 22:33:15
  */
 
 import Vue from "vue";
@@ -30,13 +30,13 @@ const router = new Router({
         import(/* webpackChunkName: "layout" */ "./layouts/UserLayout"),
       children: [
         {
-          path: "login",
+          path: "/user/login",
           name: "login",
           component: () =>
             import(/* webpackChunkName: "user" */ "./views/User/Login.vue")
         },
         {
-          path: "register",
+          path: "/user/register",
           name: "register",
           component: () =>
             import(/* webpackChunkName: "user" */ "./views/User/Register.vue")
@@ -59,55 +59,59 @@ const router = new Router({
           component: { render: h => h("router-view") },
           children: [
             {
-              path: "analysis",
+              path: "/dashboard/analysis",
               name: "analysis",
-              meta: { title: "仪表盘" },
+              meta: { title: "分析页" },
               component: () =>
                 import(/* webpackChunkName: "dashboard" */ "./views/Dashboard/Analysis")
             }
           ]
-        }
-      ]
-    },
-    // form
-    {
-      path: "/form",
-      name: "form",
-      meta: { icon: "form", title: "表单" },
-      component: { render: h => h("router-view") },
-      children: [
-        {
-          path: "basic-form",
-          name: "basicForm",
-          meta: { title: "基础表单" },
-          component: () =>
-            import(/* webpackChunkName: "form" */ "./views/Forms/BasicForm")
         },
+        // form
         {
-          path: "step-form",
-          name: "stepForm",
-          hideChildrenInMenu: true,
-          meta: { title: "分布表单" },
-          component: () =>
-            import(/* webpackChunkName: "form" */ "./views/Forms/StepForm/index"),
+          path: "/form",
+          name: "form",
+          meta: { icon: "form", title: "表单" },
+          component: { render: h => h("router-view") },
           children: [
             {
-              path: "step-form/info",
-              name: "info",
+              path: "/form/basic-form",
+              name: "basicForm",
+              meta: { title: "基础表单" },
               component: () =>
-                import(/* webpackChunkName: "form" */ "./views/Forms/StepForm/Step1")
+                import(/* webpackChunkName: "form" */ "./views/Forms/BasicForm")
             },
             {
-              path: "step-form/confirm",
-              name: "confirm",
+              path: "/form/step-form",
+              name: "stepForm",
+              hideChildrenInMenu: true,
+              meta: { title: "分布表单" },
               component: () =>
-                import(/* webpackChunkName: "form" */ "./views/Forms/StepForm/Step2")
-            },
-            {
-              path: "step-form/result",
-              name: "result",
-              component: () =>
-                import(/* webpackChunkName: "form" */ "./views/Forms/StepForm/Step3")
+                import(/* webpackChunkName: "form" */ "./views/Forms/StepForm"),
+              children: [
+                {
+                  path: "/form/step-form",
+                  redirect: "/form/step-form/info"
+                },
+                {
+                  path: "/form/step-form/info",
+                  name: "info",
+                  component: () =>
+                    import(/* webpackChunkName: "form" */ "./views/Forms/StepForm/Step1")
+                },
+                {
+                  path: "/form/step-form/confirm",
+                  name: "confirm",
+                  component: () =>
+                    import(/* webpackChunkName: "form" */ "./views/Forms/StepForm/Step2")
+                },
+                {
+                  path: "/form/step-form/result",
+                  name: "result",
+                  component: () =>
+                    import(/* webpackChunkName: "form" */ "./views/Forms/StepForm/Step3")
+                }
+              ]
             }
           ]
         }

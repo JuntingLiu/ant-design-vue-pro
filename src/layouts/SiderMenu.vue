@@ -5,10 +5,13 @@
       :selectedKeys="selectedKeys"
       :openKeys.sync="openKeys"
       :theme="theme"
-      :inlineCollapsed="collapsed"
     >
       <template v-for="item in menuData">
-        <a-menu-item v-if="!item.children" :key="item.path">
+        <a-menu-item
+          v-if="!item.children"
+          :key="item.path"
+          @click="() => $router.push({ path: item.path, query: $route.query })"
+        >
           <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
           <span>{{ item.meta.title }}</span>
         </a-menu-item>
@@ -80,8 +83,7 @@ export default {
           this.selectedKeysMap[route.path] = [selectedKey || route.path];
 
           const newRoute = { ...route };
-          delete newRoute.children;
-          console.log("清空 children", newRoute);
+          delete newRoute.children; // 清空对象里的 children
 
           if (route.children && !route.hideChildrenInMenu) {
             newRoute.children = this.getMenuData(route.children, [
