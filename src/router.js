@@ -3,7 +3,7 @@
  * @Author: Junting.liu
  * @Date: 2019-05-11 11:12:47
  * @Last Modified by: Junting.liu
- * @Last Modified time: 2019-05-17 00:07:35
+ * @Last Modified time: 2019-05-21 22:50:39
  */
 
 import Vue from "vue";
@@ -14,6 +14,7 @@ import "nprogress/nprogress.css";
 import Forbidden from "./views/403";
 import NotFound from "./views/404";
 import { isLogin, check } from "./utils/auth";
+import { notification } from "ant-design-vue";
 
 Vue.use(Router);
 
@@ -154,6 +155,10 @@ router.beforeEach((to, from, next) => {
       });
     } else if (to.path !== "403") {
       // 已登录
+      notification.error({
+        message: "403",
+        description: "你没有权限访问，请联系管理员。"
+      });
       next({
         path: "/403"
       });

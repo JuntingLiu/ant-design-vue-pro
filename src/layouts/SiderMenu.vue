@@ -27,6 +27,8 @@
  * 普通： SubMenu1.vue https://github.com/vueComponent/ant-design-vue/blob/master/components/menu/demo/SubMenu1.vue
  */
 import SubMenu from "./SubMenu";
+import { check } from "../utils/auth";
+
 export default {
   props: {
     theme: {
@@ -74,7 +76,16 @@ export default {
     },
     getMenuData(routes = [], parentKeys = [], selectedKey) {
       const menuData = [];
-      routes.forEach(route => {
+
+      for (let route of routes) {
+        // 校验权限
+        if (
+          route.meta &&
+          route.meta.authority &&
+          !check(route.meta.authority)
+        ) {
+          break;
+        }
         // 拥有 name 和 hideInMenu 为 false 的路由展示
         if (route.name && !route.hideInMenu) {
           // 当前展开的 SubMenu 菜单项 key 数组
@@ -107,7 +118,7 @@ export default {
             ...this.getMenuData(route.children, [...parentKeys, route.path])
           );
         }
-      });
+      }
       // console.log('openKeysMap', this.openKeysMap);
       // console.log('selectedKeysMap', this.selectedKeysMap);
       return menuData;
