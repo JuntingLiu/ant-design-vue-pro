@@ -29,8 +29,10 @@
         </a-layout-footer>
       </a-layout>
     </a-layout>
-    <!-- 主题设置 - 抽屉 -->
-    <SettingDrawer />
+    <!-- 主题设置 - 抽屉 - 管理员才有权限-->
+    <Authorized :authority="['admin']">
+      <SettingDrawer />
+    </Authorized>
   </div>
 </template>
 
