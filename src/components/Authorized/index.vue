@@ -9,7 +9,7 @@
  * @Last Modified time: 2019-05-22 00:09:47
  */
 
-import { check } from "../../utils/auth";
+import { check } from '../../utils/auth';
 
 export default {
   functional: true,

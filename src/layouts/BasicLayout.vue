@@ -38,13 +38,13 @@
 </template>
 
 <script>
-import Header from "./Header";
-import Footer from "./Footer";
-import SiderMenu from "./SiderMenu";
-import SettingDrawer from "../components/SettingDrawer";
+import Header from './Header';
+import Footer from './Footer';
+import SiderMenu from './SiderMenu';
+import SettingDrawer from '../components/SettingDrawer';
 
 export default {
-  name: "BasicLayout",
+  name: 'BasicLayout',
   components: {
     Header,
     Footer,
@@ -58,10 +58,10 @@ export default {
   },
   computed: {
     navTheme() {
-      return this.$route.query.navTheme || "dark";
+      return this.$route.query.navTheme || 'dark';
     },
     navLayout() {
-      return this.$route.query.navLayout || "left";
+      return this.$route.query.navLayout || 'left';
     }
   }
 };

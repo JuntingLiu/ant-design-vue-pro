@@ -26,21 +26,21 @@
  * 函数式： recommend SubMenu.vue https://github.com/vueComponent/ant-design-vue/blob/master/components/menu/demo/SubMenu.vue
  * 普通： SubMenu1.vue https://github.com/vueComponent/ant-design-vue/blob/master/components/menu/demo/SubMenu1.vue
  */
-import SubMenu from "./SubMenu";
-import { check } from "../utils/auth";
+import SubMenu from './SubMenu';
+import { check } from '../utils/auth';
 
 export default {
   props: {
     theme: {
       type: String,
-      default: "dark"
+      default: 'dark'
     }
   },
   components: {
-    "sub-menu": SubMenu
+    'sub-menu': SubMenu
   },
   watch: {
-    "$route.path": function(val) {
+    '$route.path': function(val) {
       this.selectedKeys = this.selectedKeysMap[val];
       this.openKeys = this.collapsed ? [] : this.openKeysMap[val];
     }
@@ -49,7 +49,7 @@ export default {
     this.selectedKeysMap = {};
     this.openKeysMap = {};
     const menuData = this.getMenuData(this.$router.options.routes);
-    console.log("routes", menuData);
+    console.log('routes', menuData);
     return {
       collapsed: false,
       list: [],
@@ -60,12 +60,12 @@ export default {
   },
   created() {
     console.log(
-      "selectedKeys",
+      'selectedKeys',
       this.$route.path,
       this.selectedKeysMap[this.$route.path]
     );
     console.log(
-      "openKeys",
+      'openKeys',
       this.$route.path,
       this.openKeysMap[this.$route.path]
     );

@@ -1,4 +1,4 @@
-import { check } from "../utils/auth";
+import { check } from '../utils/auth';
 
 /**
  * 自定义权限指令
@@ -8,7 +8,7 @@ import { check } from "../utils/auth";
  * @param {Object} options
  */
 function install(Vue, options = {}) {
-  Vue.directive(options.name || "auth", {
+  Vue.directive(options.name || 'auth', {
     inserted(el, binding) {
       const { value } = binding;
       if (!check(value)) {

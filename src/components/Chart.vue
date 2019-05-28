@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import echarts from "echarts";
-import debounce from "lodash/debounce"; // 防抖
-import { addListener, removeListener } from "resize-detector"; // 监听 DOM 元素, resize 监听
+import echarts from 'echarts';
+import debounce from 'lodash/debounce'; // 防抖
+import { addListener, removeListener } from 'resize-detector'; // 监听 DOM 元素, resize 监听
 
 export default {
   props: {
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     resize() {
-      console.log("resize");
+      console.log('resize');
       this.chart.resize();
     },
     renderChart() {

@@ -1,5 +1,5 @@
 export function getCurrentAuthority() {
-  return ["admin"];
+  return ['admin'];
 }
 
 export function check(authority) {
@@ -9,5 +9,5 @@ export function check(authority) {
 
 export function isLogin() {
   const current = getCurrentAuthority();
-  return current && current[0] !== "guest";
+  return current && current[0] !== 'guest';
 }
