@@ -3,13 +3,13 @@
  * @Author: Junting.liu
  * @Date: 2019-05-27 22:28:59
  * @Last Modified by: Junting.liu
- * @Last Modified time: 2019-05-27 22:44:56
+ * @Last Modified time: 2019-06-05 23:01:34
  */
 
 function chart(method) {
   let res = null;
   switch (method) {
-    case "GET":
+    case 'GET':
       res = [20, 30, 78, 68, 99, 36];
       break;
     default:

@@ -1,11 +1,9 @@
 <template>
   <div>
-    第三步
+    付款成功，两2小时之内到账。
   </div>
 </template>
 
-<script>
-export default {};
-</script>
+<script></script>
 
 <style></style>
