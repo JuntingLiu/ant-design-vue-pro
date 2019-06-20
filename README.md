@@ -1,34 +1,31 @@
-# ant-design-vue-pro
+<h1 align="center">Welcome to  👋</h1>
+<p>
+  <img src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+</p>
 
-## Project setup
-```
+> Ant Design Pro by Vue
+
+## Install
+
+```sh
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+## 查看 webpack 配置
+
+```sh
+vue inspect > output.js
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Author
 
-### Run your tests
-```
-npm run test
-```
+👤 **Junting &lt;342766475@qq.com&gt;**
 
-### Lints and fixes files
-```
-npm run lint
-```
+* Github: [@JuntingLiu](https://github.com/JuntingLiu)
 
-### Run your unit tests
-```
-npm run test:unit
-```
+## Show your support
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
