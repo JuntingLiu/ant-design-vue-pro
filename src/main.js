@@ -34,6 +34,12 @@ Vue.use(Select);
 Vue.component('Authorized', Authorized); // 注册全局组件
 Vue.use(Auth); // 注册指令
 
+const IconFont_404 = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_1237505_mgy8g9ozvt.js'
+});
+
+Vue.component('IconFont_404', IconFont_404);
+
 new Vue({
   router,
   store,
