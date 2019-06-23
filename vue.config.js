@@ -9,6 +9,12 @@ module.exports = {
     loaderOptions: {
       // 给 less-loader 传递选项
       less: {
+        // 定制主题（全局生效）
+        modifyVars: {
+          'primary-color': '#1DA57A', // 主题颜色
+          'link-color': '#1DA57A', // 链接颜色
+          'border-radius-base': '2px'
+        },
         javascriptEnabled: true
       }
     }
