@@ -17,10 +17,12 @@
 <script>
 export default {
   methods: {
+    // 切换语言
     localeChange({ key }) {
       this.$router.push({
         query: { ...this.$router.query, locale: key }
       });
+      this.$i18n.locale = key;
     }
   }
 };

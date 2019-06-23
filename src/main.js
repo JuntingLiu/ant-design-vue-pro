@@ -1,7 +1,11 @@
 import Vue from 'vue';
+import VueI18n from 'vue-i18n';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import enUS from './locale/enUS';
+import zhCN from './locale/zhCN';
+import querystring from 'querystring';
 // 引入所有组件的方式
 // import Antd from "ant-design-vue";
 // import "ant-design-vue/dist/antd.less";
@@ -39,6 +43,15 @@ Vue.use(Dropdown);
 Vue.use(DatePicker);
 Vue.component('Authorized', Authorized); // 注册全局组件
 Vue.use(Auth); // 注册指令
+Vue.use(VueI18n);
+
+const i18n = new VueI18n({
+  locale: querystring.parse(location.search).local || 'zhCN',
+  messages: {
+    zhCN: { message: zhCN },
+    enUS: { message: enUS }
+  }
+});
 
 const IconFont_404 = Icon.createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_1237505_mgy8g9ozvt.js'
@@ -47,6 +60,7 @@ const IconFont_404 = Icon.createFromIconfontCN({
 Vue.component('IconFont_404', IconFont_404);
 
 new Vue({
+  i18n,
   router,
   store,
   render: h => h(App)
