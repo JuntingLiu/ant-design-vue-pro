@@ -1,3 +1,20 @@
+const path = require('path');
+const AntDesignThemePlugin = require('antd-theme-webpack-plugin');
+
+const options = {
+  antDir: path.join(__dirname, './node_modules/ant-design-vue'),
+  stylesDir: path.join(__dirname, './src'),
+  varFile: path.join(
+    __dirname,
+    './node_modules/ant-design-vue/lib/style/themes/default.less'
+  ),
+  mainLessFile: '',
+  themeVariables: ['@primary-color'],
+  generateOnce: false
+};
+
+const themePlugin = new AntDesignThemePlugin(options);
+
 module.exports = {
   baseUrl: undefined,
   outputDir: undefined,
@@ -18,6 +35,9 @@ module.exports = {
         javascriptEnabled: true
       }
     }
+  },
+  configureWebpack: {
+    plugins: [themePlugin]
   },
   // 新增一个 svg loader
   chainWebpack: config => {

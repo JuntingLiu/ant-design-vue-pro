@@ -9,7 +9,7 @@
     >
       <!-- 展示控制按钮 -->
       <template v-slot:handle>
-        <div class="handle" @click="() => (visible = !visible)">
+        <div class="setting-drawer-handle" @click="() => (visible = !visible)">
           <a-icon :type="visible ? 'close' : 'setting'"></a-icon>
         </div>
       </template>
@@ -62,23 +62,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.handle {
-  position: absolute;
-  top: 240px;
-  right: 300px;
-  z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  font-size: 16px;
-  color: #fff;
-  text-align: center;
-  background: #1890ff;
-  border-radius: 4px 0 0 4px;
-  cursor: pointer;
-  pointer-events: auto;
-}
-</style>
+<style lang="less" src="./index.less"></style>

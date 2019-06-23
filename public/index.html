@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title>ant-design-vue-pro</title>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but ant-design-vue-pro doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but ant-design-vue-pro doesn't work properly without
+        JavaScript enabled. Please enable it to continue.</strong
+      >
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <!-- 后续使用动态生成此文件 -->
+    <link rel="stylesheet/less" type="text/css" href="/color.less" />
+    <script>
+      window.less = {
+        async: false,
+        env: 'production',
+        javascriptEnabled: true,
+        // 定制主题（全局生效）动态生成
+        modifyVars: {
+          'primary-color': '#1DA57A', // 主题颜色
+          'link-color': '#1DA57A', // 链接颜色
+          'border-radius-base': '2px'
+        }
+      };
+    </script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"
+    ></script>
   </body>
 </html>
