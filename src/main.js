@@ -15,7 +15,10 @@ import {
   Menu,
   Form,
   Input,
-  Select
+  Select,
+  LocaleProvider,
+  Dropdown,
+  DatePicker
 } from 'ant-design-vue';
 import Authorized from './components/Authorized';
 import Auth from './directives/auth';
@@ -31,6 +34,9 @@ Vue.use(Menu);
 Vue.use(Form);
 Vue.use(Input);
 Vue.use(Select);
+Vue.use(LocaleProvider);
+Vue.use(Dropdown);
+Vue.use(DatePicker);
 Vue.component('Authorized', Authorized); // 注册全局组件
 Vue.use(Auth); // 注册指令
 
